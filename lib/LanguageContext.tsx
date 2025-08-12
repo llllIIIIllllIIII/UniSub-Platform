@@ -219,6 +219,8 @@ const translations = {
     'error.transactionFailed': '交易失敗',
     'error.contractCallFailed': '合約調用失敗',
     'error.networkError': '網路錯誤',
+    'error.getUSDTBalanceFailed': '獲取 USDT 餘額失敗',
+    'error.networkNotConfigured': '網路的合約地址尚未配置，請使用 Morph Holesky 網路',
 
     // 成功訊息
     'success.subscriptionPurchased': '訂閱購買成功！',
@@ -436,6 +438,8 @@ const translations = {
     'error.transactionFailed': 'Transaction failed',
     'error.contractCallFailed': 'Contract call failed',
     'error.networkError': 'Network error',
+    'error.getUSDTBalanceFailed': 'Failed to get USDT balance',
+    'error.networkNotConfigured': 'network contract addresses are not configured, please use Morph Holesky network',
 
     // Success Messages
     'success.subscriptionPurchased': 'Subscription purchased successfully!',

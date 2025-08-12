@@ -24,12 +24,13 @@ import LoadingSpinner from '../../components/LoadingSpinner';
 import { useWeb3 } from '../../lib/Web3Context';
 import { useLanguage } from '../../lib/LanguageContext';
 import { 
-  getContractConfig,
-  FACTORY_ABI,
-  SUBSCRIPTION_ABI 
-} from '../../lib/contracts';
-
-// 添加 window.ethereum 的類型聲明
+  getContractConfig, 
+  FACTORY_ABI, 
+  SUBSCRIPTION_ABI,
+  USDT_ABI,
+  formatUSDT,
+  parseUSDT
+} from '../../lib/contracts';// 添加 window.ethereum 的類型聲明
 declare global {
   interface Window {
     ethereum?: any;
@@ -97,7 +98,7 @@ export default function ProviderPage() {
       console.log('🔍 Loading services for provider:', address);
       console.log('🔗 Chain ID:', chainId);
       
-      const config = getContractConfig(chainId);
+      const config = getContractConfig(chainId, t);
       console.log('📋 Using contract config:', config);
       
       const factoryContract = new ethers.Contract(
@@ -169,7 +170,7 @@ export default function ProviderPage() {
       
       console.log('🔧 Creating new service with:', createForm);
       
-      const config = getContractConfig(chainId);
+      const config = getContractConfig(chainId, t);
       const factoryContract = new ethers.Contract(
         config.contracts.subscriptionFactory,
         FACTORY_ABI,

@@ -3,6 +3,7 @@
 import { useState, useEffect } from 'react';
 import { ethers } from 'ethers';
 import { useWeb3 } from './Web3Context';
+import { useLanguage } from './LanguageContext';
 import { 
   CONTRACT_ADDRESSES, 
   FACTORY_ABI, 
@@ -11,6 +12,7 @@ import {
   formatUSDT,
   parseUSDT,
   getContractConfig,
+  createUSDTBalanceError,
   type MarketListing,
   type SubscriptionService,
   type UserSubscriptionStatus 
@@ -18,6 +20,7 @@ import {
 
 export function useUniSub() {
   const { provider, signer, userAddress, chainId, isConnected } = useWeb3();
+  const { t } = useLanguage();
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState('');
 
@@ -27,7 +30,7 @@ export function useUniSub() {
       throw new Error('請先連接錢包');
     }
 
-    const config = getContractConfig(chainId);
+    const config = getContractConfig(chainId, t);
     
     const factoryContract = new ethers.Contract(
       config.contracts.subscriptionFactory,
@@ -55,7 +58,7 @@ export function useUniSub() {
       return formatUSDT(balance);
     } catch (err: any) {
       console.error('獲取 USDT 餘額失敗:', err);
-      throw new Error(`獲取 USDT 餘額失敗: ${err.message}`);
+      throw new Error(createUSDTBalanceError(err.message, t));
     }
   };
 
@@ -128,7 +131,7 @@ export function useUniSub() {
         console.warn('⚠️ 無法從 Factory 獲取集合，嘗試使用預設服務:', factoryError.message);
         
         // 如果 getAllCollections 失敗，使用預設的服務地址
-        const config = getContractConfig(chainId);
+        const config = getContractConfig(chainId, t);
         const defaultServices = Object.values(config.services || {}) as string[];
         
         if (defaultServices.length > 0) {

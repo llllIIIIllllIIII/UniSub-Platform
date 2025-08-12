@@ -159,8 +159,41 @@ export function isSubscriptionExpired(expirationTime: Date): boolean {
   return new Date() > expirationTime;
 }
 
+// 網路名稱映射
+export function getNetworkName(chainId: number): string {
+  switch (chainId) {
+    case 2810:
+      return 'Morph Holesky';
+    case 11155111:
+      return 'Sepolia';
+    default:
+      return `Unknown Network (${chainId})`;
+  }
+}
+
+// 國際化錯誤信息創建函數
+export function createNetworkNotConfiguredError(chainId: number, t?: (key: string) => string): string {
+  const networkName = getNetworkName(chainId);
+  
+  if (t) {
+    // 如果有翻譯函數，使用國際化消息
+    return `${networkName} ${t('error.networkNotConfigured')}`;
+  } else {
+    // 降級到中文默認消息
+    return `${networkName} 網路的合約地址尚未配置，請使用 Morph Holesky 網路`;
+  }
+}
+
+export function createUSDTBalanceError(originalError: string, t?: (key: string) => string): string {
+  if (t) {
+    return `${t('error.getUSDTBalanceFailed')}: ${originalError}`;
+  } else {
+    return `獲取 USDT 餘額失敗: ${originalError}`;
+  }
+}
+
 // 取得當前網路的合約配置
-export function getContractConfig(chainId: number) {
+export function getContractConfig(chainId: number, t?: (key: string) => string) {
   let config;
   
   switch (chainId) {
@@ -178,7 +211,7 @@ export function getContractConfig(chainId: number) {
   if (chainId === 11155111) {
     console.log(`⚠️ Sepolia 網路使用舊合約配置，某些功能可能不可用`);
     if (!config.contracts.subscriptionFactory && !config.contracts.mockUSDT) {
-      throw new Error(`Sepolia 網路的合約地址尚未配置，請使用 Morph Holesky 網路`);
+      throw new Error(createNetworkNotConfiguredError(chainId, t));
     }
   } else {
     // 對於 Morph Holesky，驗證必要的合約地址是否已配置
