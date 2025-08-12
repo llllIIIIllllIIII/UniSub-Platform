@@ -55,8 +55,9 @@ CONTRACT_ABI_GUIDE.md
 GAS_ESTIMATION_SOLUTION.md
 AI_AGENT_CONTRACT_GUIDE.md
 
-# 開發配置文件
+# 開發配置文件和修正腳本
 quick-start.sh
+fix_listSubscription.sh
 
 # 合約配置（如果包含敏感信息）
 # CONTRACT_CONFIG_FOR_FRONTEND.json
