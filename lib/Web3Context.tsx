@@ -2,6 +2,7 @@
 
 import React, { createContext, useContext, useState, useEffect, ReactNode } from 'react';
 import { ethers } from 'ethers';
+import { initializeDefaultNetwork } from './networkUtils';
 
 // 添加 window.ethereum 的類型聲明
 declare global {
@@ -202,14 +203,14 @@ export function Web3Provider({ children }: Web3ProviderProps) {
         await initializeWeb3(accounts[0]);
         
         console.log('🔍 檢查網路...');
-        // 如果不是正確的網路，提示切換
+        // 如果不是正確的網路，提示切換到 Morph Holesky
         const currentChainId = await window.ethereum.request({ method: 'eth_chainId' });
         const currentChainIdNum = parseInt(currentChainId, 16);
-        console.log('🌐 當前鏈 ID:', currentChainIdNum, '期望:', SEPOLIA_CHAIN_ID);
+        console.log('🌐 當前鏈 ID:', currentChainIdNum, '期望:', NETWORKS.morphHolesky.chainId);
         
-        if (currentChainIdNum !== SEPOLIA_CHAIN_ID) {
-          console.log('⚠️ 網路不正確，嘗試切換到 Sepolia...');
-          await switchToSepolia();
+        if (currentChainIdNum !== NETWORKS.morphHolesky.chainId) {
+          console.log('⚠️ 網路不正確，嘗試切換到 Morph Holesky...');
+          await switchToMorphHolesky();
         }
       } else {
         throw new Error('未獲取到任何帳戶');
@@ -385,13 +386,17 @@ export function Web3Provider({ children }: Web3ProviderProps) {
     }
   }, [userAddress, isConnected]);
 
-  // 頁面載入時檢查錢包連接
+  // 頁面載入時檢查錢包連接和網路
   useEffect(() => {
     console.log('🚀 Web3Provider 初始化中...');
     
     // 添加一個小延遲以確保頁面完全載入
     const timer = setTimeout(async () => {
       try {
+        // 首先初始化默認網路
+        await initializeDefaultNetwork();
+        
+        // 然後檢查錢包連接
         await checkWalletConnection();
       } catch (error) {
         console.error('💥 初始錢包檢查失敗:', error);

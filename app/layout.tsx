@@ -2,10 +2,11 @@ import './globals.css'
 import type { Metadata } from 'next'
 import { Web3Provider } from '../lib/Web3Context'
 import { LanguageProvider } from '../lib/LanguageContext'
+import NetworkSwitchPrompt from '../components/NetworkSwitchPrompt'
 
 export const metadata: Metadata = {
-  title: 'Unisub - NFT Subscription Platform',
-  description: 'The Future of Content Subscription: NFT Access Pass',
+  title: 'UniSub Platform - Decentralized NFT Subscription Platform',
+  description: 'A blockchain-based NFT subscription platform on Morph Holesky Testnet',
 }
 
 export default function RootLayout({
@@ -18,6 +19,7 @@ export default function RootLayout({
       <body className="min-h-screen font-inter antialiased">
         <LanguageProvider>
           <Web3Provider>
+            <NetworkSwitchPrompt />
             {children}
           </Web3Provider>
         </LanguageProvider>

@@ -75,13 +75,13 @@ export default function Navbar({ className = '' }: NavbarProps) {
     }
   };
 
-  // 處理網路切換
+  // 處理網路切換 - 預設切換到 Morph Holesky
   const handleNetworkSwitch = () => {
-    if (chainId === 2810) {
-      // 如果在 Morph Holesky，切換到 Sepolia
-      switchToSepolia();
+    if (chainId === 11155111) {
+      // 如果在 Sepolia，切換到 Morph Holesky
+      switchToMorphHolesky();
     } else {
-      // 否則切換到 Morph Holesky
+      // 否則切換到 Morph Holesky（預設行為）
       switchToMorphHolesky();
     }
   };
