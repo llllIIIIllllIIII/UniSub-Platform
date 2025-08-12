@@ -512,13 +512,34 @@ export function useUniSub() {
       setError('');
 
       const { usdtContract } = getContracts();
-      const amountWei = parseUSDT(amount);
       
-      const tx = await usdtContract.mint(userAddress, amountWei);
-      const receipt = await tx.wait();
-      
-      console.log(`已獲得 ${amount} 測試 USDT`);
-      return receipt.transactionHash;
+      try {
+        // 使用 faucet 函數而不是 mint，這是公共函數，任何用戶都可以調用
+        console.log('調用 faucet 函數獲取測試 USDT...');
+        const tx = await usdtContract.faucet(userAddress);
+        const receipt = await tx.wait();
+        
+        console.log('✅ 成功獲得測試 USDT');
+        console.log('交易哈希:', receipt.transactionHash);
+        
+        return receipt.transactionHash;
+        
+      } catch (faucetError: any) {
+        console.error('Faucet 操作失敗:', faucetError);
+        
+        // 如果是 gas 估算錯誤，提供更友好的錯誤信息
+        if (faucetError.code === 'UNPREDICTABLE_GAS_LIMIT') {
+          throw new Error('無法獲取測試代幣。可能的原因：已經領取過代幣或達到領取限制。');
+        }
+        
+        // 如果是已領取錯誤
+        if (faucetError.message?.includes('already claimed') || 
+            faucetError.message?.includes('AlreadyClaimed')) {
+          throw new Error('此地址已經領取過測試代幣。請使用其他地址或等待重置。');
+        }
+        
+        throw faucetError;
+      }
 
     } catch (err: any) {
       console.error('獲取測試 USDT 失敗:', err);
