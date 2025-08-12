@@ -1,194 +1,193 @@
-# 🚀 UniSub - NFT 訂閱平台
+# 🚀 UniSub Platform - Decentralized NFT Subscription Platform
 
-UniSub 是一個基於區塊鏈的去中心化 NFT 訂閱平台，允許服務提供商創建訂閱服務，用戶使用 USDT 購買訂閱，並以 NFT 形式獲得訂閱憑證。
+UniSub is a blockchain-based decentralized NFT subscription platform that enables service providers to create subscription services. Users can purchase subscriptions using USDT and receive NFT-based subscription certificates.
 
-## 🎯 核心功能
+## 🎯 Core Features
 
-### Consumer (消費者) 頁面
-- **錢包連接**: MetaMask 整合，支援 Sepolia 測試網
-- **瀏覽服務**: 顯示所有可用的訂閱服務
-- **購買訂閱**: 一鍵訂閱流程，USDT 授權處理
-- **管理訂閱**: 查看所有擁有的訂閱 NFT，續費功能
-- **測試功能**: 領取測試 USDT 代幣
+### Consumer Portal
+- **Wallet Integration**: MetaMask integration with Morph Holesky testnet support
+- **Service Discovery**: Browse all available subscription services
+- **One-Click Subscription**: Streamlined subscription process with USDT authorization
+- **Subscription Management**: View all owned subscription NFTs and renewal functionality
+- **Testing Tools**: Mint test USDT tokens for development
 
-### Provider (服務提供商) 頁面
-- **服務管理**: 查看和管理創建的訂閱服務
-- **創建服務**: 創建新的訂閱服務（名稱、符號、價格、期間）
-- **統計數據**: 總服務數、活躍服務、訂閱者數量、收益統計
-- **服務詳情**: 每個服務的詳細信息和統計
+### Provider Portal
+- **Service Management**: View and manage created subscription services
+- **Service Creation**: Create new subscription services (name, symbol, price, duration)
+- **Analytics Dashboard**: Total services, active services, subscriber count, revenue statistics
+- **Service Details**: Detailed information and statistics for each service
 
-## 🛠️ 技術棧
+## 🛠️ Tech Stack
 
-- **前端**: Next.js 14 + TypeScript + Tailwind CSS
-- **區塊鏈**: Ethereum (Sepolia 測試網)
-- **智能合約**: Solidity
-- **Web3**: ethers.js v5.7.2
-- **UI 組件**: Lucide React Icons
+- **Frontend**: Next.js 14 + TypeScript + Tailwind CSS
+- **Blockchain**: Morph Holesky Testnet
+- **Smart Contracts**: Solidity
+- **Web3 Integration**: ethers.js v5.7.2
+- **UI Components**: Lucide React Icons
 
-## 🚀 快速開始
+## 🚀 Quick Start
 
-### 安裝依賴
+### Install Dependencies
 ```bash
 npm install
 ```
 
-### 啟動開發服務器
+### Start Development Server
 ```bash
 npm run dev
 ```
 
-### 訪問應用
-打開 [http://localhost:3000](http://localhost:3000) 查看應用。
+### Access Application
+Open [http://localhost:3000](http://localhost:3000) to view the application.
 
-## 🔗 已部署合約地址 (Sepolia 測試網)
+## 🔗 Deployed Contract Addresses (Morph Holesky Testnet)
 
 ```
-Mock USDT: 0x51E4026e3ea3E57C57F27a46D1568916e915350f
-Subscription Factory: 0xdCb1A78DdC236b34606fC316c715e509Db5EBDcf
+Mock USDT: 0xA2c5e6a98dc69CD3e7c94d3694B7D31DB5FFE33F
+Subscription Factory: 0x657296a72483F8F330287B2F1E20293a2a2C2F52
 
-預設服務:
-- Netflix Premium: 0x1D62ecD70C4B7091A9f809e2d05db6075BDF6eee (15 USDT/月)
-- Spotify Premium: 0x63cD8d64757DE5f52Fb87d7727d2b4DFCe9B5d05 (10 USDT/月)  
-- YouTube Premium: 0xdAAB147E490274524292255eD021c15563eb006C (12 USDT/月)
+Default Services:
+- Netflix Premium: 0x2FCc622C00bBD6961e08C974167a233cd9FFC283 (15 USDT/month)
+- Spotify Premium: 0x1c9fFB664d59F60d157e5885C2EdFB287B913091 (10 USDT/month)
 ```
 
-## 📱 頁面功能詳解
+## 📱 Page Features Overview
 
-### Consumer 頁面 (`/consumer`)
+### Consumer Portal (`/consumer`)
 
-#### 主要功能
-1. **錢包連接**
-   - MetaMask 整合
-   - 顯示 ETH 和 USDT 餘額
-   - 網路狀態檢查
+#### Main Features
+1. **Wallet Connection**
+   - MetaMask integration
+   - Display ETH and USDT balances
+   - Network status verification
 
-2. **瀏覽服務**
-   - 顯示所有可用訂閱服務
-   - 服務卡片包含：名稱、價格、期間
-   - 一鍵訂閱功能
+2. **Service Discovery**
+   - Display all available subscription services
+   - Service cards with name, price, and duration
+   - One-click subscription functionality
 
-3. **我的訂閱**
-   - 顯示所有擁有的訂閱 NFT
-   - 訂閱狀態 (有效/過期)
-   - 到期時間倒計時
-   - 續費功能
+3. **My Subscriptions**
+   - Display all owned subscription NFTs
+   - Subscription status (active/expired)
+   - Expiry countdown timer
+   - Renewal functionality
 
-4. **測試功能**
-   - 領取測試 USDT 按鈕
-   - 每次領取 1000 USDT
+4. **Testing Tools**
+   - Mint test USDT button
+   - 1000 USDT per mint
 
-#### 使用流程
-1. 連接 MetaMask 錢包
-2. 確保在 Sepolia 測試網
-3. 領取測試 USDT (可選)
-4. 瀏覽可用服務
-5. 選擇服務並訂閱
-6. 管理訂閱和續費
+#### Usage Flow
+1. Connect MetaMask wallet
+2. Ensure on Morph Holesky testnet
+3. Mint test USDT (optional)
+4. Browse available services
+5. Select service and subscribe
+6. Manage subscriptions and renewals
 
-### Provider 頁面 (`/provider`)
+### Provider Portal (`/provider`)
 
-#### 主要功能
-1. **服務管理儀表板**
-   - 總服務數統計
-   - 活躍服務數統計
-   - 總訂閱者數量
-   - 總收益統計
+#### Main Features
+1. **Service Management Dashboard**
+   - Total services statistics
+   - Active services count
+   - Total subscriber count
+   - Total revenue statistics
 
-2. **創建新服務**
-   - 服務名稱和符號
-   - 價格設定 (USDT)
-   - 期間設定 (天數)
-   - 服務描述
+2. **Create New Service**
+   - Service name and symbol
+   - Price configuration (USDT)
+   - Duration settings (days)
+   - Service description
 
-3. **服務列表**
-   - 顯示創建的所有服務
-   - 每個服務的詳細統計
-   - 服務狀態管理
+3. **Service List**
+   - Display all created services
+   - Detailed statistics for each service
+   - Service status management
 
-#### 使用流程
-1. 連接 MetaMask 錢包
-2. 確保在 Sepolia 測試網
-3. 點擊 "Create New Service"
-4. 填寫服務信息
-5. 確認創建服務
-6. 查看服務統計和管理
+#### Usage Flow
+1. Connect MetaMask wallet
+2. Ensure on Morph Holesky testnet
+3. Click "Create New Service"
+4. Fill in service information
+5. Confirm service creation
+6. View service statistics and management
 
-## 🔧 開發說明
+## 🔧 Development Guide
 
-### 合約 ABI
-所有合約 ABI 都定義在各自的頁面文件中：
-- `FACTORY_ABI`: 工廠合約接口
-- `SUBSCRIPTION_ABI`: 訂閱合約接口
-- `USDT_ABI`: USDT 代幣接口
+### Contract ABIs
+All contract ABIs are defined in respective page files:
+- `FACTORY_ABI`: Factory contract interface
+- `SUBSCRIPTION_ABI`: Subscription contract interface
+- `USDT_ABI`: USDT token interface
 
-### 樣式系統
-使用 Tailwind CSS 和自定義 CSS 類：
-- 響應式設計
-- 深色模式支持
-- 動畫效果
-- 玻璃態效果
+### Styling System
+Uses Tailwind CSS with custom CSS classes:
+- Responsive design
+- Dark mode support
+- Animation effects
+- Glass morphism effects
 
-### 狀態管理
-使用 React Hooks 進行狀態管理：
-- `useState`: 本地狀態
-- `useEffect`: 副作用處理
-- 自定義 hooks (可擴展)
+### State Management
+Uses React Hooks for state management:
+- `useState`: Local state management
+- `useEffect`: Side effect handling
+- Custom hooks (extensible)
 
-## 🎨 設計特色
+## 🎨 Design Features
 
-- **現代化界面**: 使用漸層、陰影、圓角等現代設計元素
-- **深色模式**: 完整的深色模式支持
-- **動畫效果**: 平滑的過渡動畫和懸停效果
-- **響應式設計**: 適配各種屏幕尺寸
-- **用戶體驗**: 清晰的狀態反饋和錯誤處理
+- **Modern Interface**: Utilizes gradients, shadows, rounded corners and modern design elements
+- **Dark Mode**: Complete dark mode support
+- **Animation Effects**: Smooth transition animations and hover effects
+- **Responsive Design**: Adapts to various screen sizes
+- **User Experience**: Clear status feedback and error handling
 
-## 🚨 注意事項
+## 🚨 Important Notes
 
-### 安全性
-- 僅支持 Sepolia 測試網操作
-- 所有交易都需要用戶確認
-- 合約地址硬編碼，確保安全性
+### Security
+- Only supports Morph Holesky testnet operations
+- All transactions require user confirmation
+- Contract addresses are hardcoded for security
 
-### 用戶體驗
-- 清晰的錯誤訊息
-- 交易狀態即時反饋
-- Loading 狀態處理
-- 失敗重試機制
+### User Experience
+- Clear error messages
+- Real-time transaction status feedback
+- Loading state handling
+- Failure retry mechanism
 
-### 數據格式
-- USDT 使用 6 位小數 (1 USDT = 1,000,000 wei)
-- 時間以 Unix 時間戳存儲
-- 價格以最小單位存儲
+### Data Formats
+- USDT uses 6 decimal places (1 USDT = 1,000,000 wei)
+- Time stored as Unix timestamps
+- Prices stored in smallest units
 
-## 📚 參考資源
+## 📚 Resources
 
-- **測試網**: Sepolia Testnet
-- **區塊瀏覽器**: https://sepolia.etherscan.io/
-- **測試 ETH**: https://sepoliafaucet.com/
-- **框架**: Next.js + ethers.js
+- **Testnet**: Morph Holesky Testnet
+- **Block Explorer**: https://explorer-holesky.morphl2.io
+- **RPC Endpoint**: https://rpc-quicknode-holesky.morphl2.io
+- **Framework**: Next.js + ethers.js
 
-## ✅ 開發檢核清單
+## ✅ Development Checklist
 
-### Consumer 頁面
-- [x] 錢包連接功能
-- [x] 服務瀏覽界面
-- [x] 訂閱購買流程
-- [x] 我的訂閱管理
-- [x] 續費功能
-- [x] 測試代幣領取
+### Consumer Portal
+- [x] Wallet connection functionality
+- [x] Service browsing interface
+- [x] Subscription purchase flow
+- [x] My subscriptions management
+- [x] Renewal functionality
+- [x] Test token minting
 
-### Provider 頁面  
-- [x] 服務創建表單
-- [x] 服務管理界面
-- [x] 統計數據展示
-- [x] 訂閱者查看
+### Provider Portal  
+- [x] Service creation form
+- [x] Service management interface
+- [x] Statistics dashboard
+- [x] Subscriber viewing
 
-### 通用功能
-- [x] 響應式設計
-- [x] 錯誤處理
-- [x] Loading 狀態
-- [x] 交易確認流程
+### General Features
+- [x] Responsive design
+- [x] Error handling
+- [x] Loading states
+- [x] Transaction confirmation flow
 
 ---
 
-*💡 提示: 這是一個完整的 NFT 訂閱平台，專注於為用戶提供流暢的 Web3 訂閱體驗。合約已經完全開發並部署完成，前端開發可以直接基於這些合約接口進行。* 
+*💡 Note: This is a complete NFT subscription platform focused on providing a seamless Web3 subscription experience. The smart contracts are fully developed and deployed, enabling direct frontend development based on these contract interfaces.* 
