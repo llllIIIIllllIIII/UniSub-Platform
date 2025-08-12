@@ -1,0 +1,171 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap');
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  body {
+    font-family: 'Inter', sans-serif;
+    background-color: #dceeff;
+    color: #071116;
+    transition: all 0.3s ease;
+  }
+  
+  html {
+    scroll-behavior: smooth;
+  }
+  
+  * {
+    transition: background-color 0.3s ease, color 0.3s ease, border-color 0.3s ease;
+  }
+}
+
+@layer components {
+  .hero-title {
+    font-weight: 700;
+    font-stretch: 110%;
+    letter-spacing: -0.02em;
+    text-transform: uppercase;
+    font-size: clamp(3rem, 8vw, 6rem);
+    text-align: center;
+    background: linear-gradient(135deg, #5c4ade 0%, #325feb 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    color: #5c4ade; /* 後備顏色 */
+  }
+  
+  .slogan-text {
+    font-family: 'Inter', sans-serif;
+    font-stretch: 110%;           /* 拉長字寬 */
+    font-weight: 700;             /* Bold */
+    letter-spacing: -0.02em;      /* 緊縮字距 */
+    text-transform: uppercase;    /* 全大寫 */
+    font-size: clamp(2.5rem, 8vw, 5rem); /* 流體字體大小 */
+    background: linear-gradient(135deg, #5c4ade 0%, #325feb 50%, #508fff 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    text-align: center;
+    margin: 4rem 0;
+    filter: drop-shadow(0 6px 12px rgba(92, 74, 222, 0.4));
+    animation: pulse-slow 3s ease-in-out infinite;
+    color: #5c4ade; /* 後備顏色 */
+    line-height: 1.1;
+    position: relative;
+    z-index: 10;
+  }
+  
+  .dark .slogan-text {
+    /* 深色模式使用白色文字，紫色外光暈 */
+    background: none;
+    color: #ffffff; /* 白色文字 */
+    -webkit-text-fill-color: initial;
+    background-clip: initial;
+    text-shadow: 
+      0 0 20px rgba(139, 92, 246, 0.8),
+      0 0 40px rgba(139, 92, 246, 0.6),
+      0 0 60px rgba(139, 92, 246, 0.4),
+      0 0 80px rgba(139, 92, 246, 0.2);
+    filter: drop-shadow(0 6px 12px rgba(139, 92, 246, 0.6));
+    /* 保持字體樣式 */
+    font-stretch: 110%;
+  }
+  
+  /* 確保漸層文字在深色模式下可見的備用方案 */
+  @supports not (-webkit-background-clip: text) {
+    .slogan-text {
+      color: #5c4ade;
+      background: none;
+      -webkit-text-fill-color: initial;
+    }
+    
+    .dark .slogan-text {
+      color: #ffffff;
+      background: none;
+      -webkit-text-fill-color: initial;
+      text-shadow: 
+        0 0 20px rgba(139, 92, 246, 0.8),
+        0 0 40px rgba(139, 92, 246, 0.6),
+        0 0 60px rgba(139, 92, 246, 0.4),
+        0 0 80px rgba(139, 92, 246, 0.2);
+    }
+  }
+  
+  .btn-primary {
+    @apply bg-gradient-to-r from-brand-purple to-brand-blue hover:from-brand-blue hover:to-brand-purple text-white font-bold py-4 px-8 rounded-2xl transition-all duration-300 shadow-lg hover:shadow-2xl hover:scale-105 active:scale-95 transform flex items-center justify-center;
+    box-shadow: 0 4px 15px rgba(92, 74, 222, 0.3);
+  }
+  
+  .dark .btn-primary {
+    @apply bg-gradient-to-r from-brand-purple to-brand-blue hover:from-brand-blue hover:to-brand-purple flex items-center justify-center;
+    box-shadow: 0 4px 15px rgba(124, 106, 255, 0.4);
+  }
+  
+  .btn-secondary {
+    @apply bg-white hover:bg-brand-bg text-brand-purple border-2 border-brand-purple font-bold py-4 px-8 rounded-2xl transition-all duration-300 shadow-lg hover:shadow-2xl hover:scale-105 active:scale-95 transform flex items-center justify-center;
+    backdrop-filter: blur(10px);
+  }
+  
+  .dark .btn-secondary {
+    @apply bg-dark-card hover:bg-dark-surface text-brand-light-blue border-brand-light-blue;
+    backdrop-filter: blur(10px);
+  }
+  
+  .card {
+    @apply bg-white/80 backdrop-blur-md rounded-3xl shadow-xl hover:shadow-2xl transition-all duration-500 p-8 border border-white/20 hover:border-brand-light-blue/30 transform hover:scale-105;
+  }
+  
+  .dark .card {
+    @apply bg-dark-card/80 text-dark-text border-dark-surface/50 hover:border-brand-light-blue/50;
+  }
+  
+  .card:hover {
+    transform: translateY(-8px) scale(1.02);
+  }
+  
+  .gradient-bg {
+    background: linear-gradient(135deg, #dceeff 0%, #ffffff 50%, #dceeff 100%);
+  }
+  
+  .dark .gradient-bg {
+    background: linear-gradient(135deg, #0a0a0a 0%, #1a1a1a 50%, #0a0a0a 100%);
+  }
+  
+  .glass-effect {
+    backdrop-filter: blur(20px);
+    background: rgba(255, 255, 255, 0.1);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+  }
+  
+  .dark .glass-effect {
+    background: rgba(0, 0, 0, 0.3);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+  }
+  
+  .loading-spinner {
+    @apply animate-spin-slow;
+  }
+  
+  .page-transition {
+    @apply transition-all duration-500 ease-in-out;
+  }
+  
+  .hover-lift {
+    @apply transition-all duration-300 hover:transform hover:scale-105 hover:-translate-y-2;
+  }
+  
+  .text-gradient {
+    background: linear-gradient(135deg, #5c4ade 0%, #325feb 50%, #508fff 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+  }
+  
+  .dark .text-gradient {
+    background: linear-gradient(135deg, #7c6aff 0%, #4a7cff 50%, #70a3ff 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+  }
+}

@@ -1,0 +1,65 @@
+# See https://help.github.com/articles/ignoring-files/ for more about ignoring files.
+
+# Dependencies
+/node_modules
+/.pnp
+.pnp.js
+.yarn/install-state.gz
+
+# Testing
+/coverage
+
+# Next.js
+/.next/
+/out/
+
+# Production
+/build
+
+# Misc
+.DS_Store
+*.pem
+
+# Debug
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+
+# Local env files
+.env*.local
+
+# Vercel
+.vercel
+
+# TypeScript
+*.tsbuildinfo
+next-env.d.ts
+
+# ========================================
+# 🧪 測試和診斷相關文件（不推送到 GitHub）
+# ========================================
+
+# 測試頁面目錄
+/app/test-*
+/app/diagnose-*
+/app/debug-*
+/app/fix-*
+/app/comprehensive-gas-fix
+/app/correct-listing-test
+/app/quick-fix-listing
+/app/final-contract-test
+
+# 測試和診斷文檔
+LISTSUBSCRIPTION_PARAMETER_FIX.md
+CONTRACT_ABI_GUIDE.md
+GAS_ESTIMATION_SOLUTION.md
+AI_AGENT_CONTRACT_GUIDE.md
+
+# 開發配置文件
+quick-start.sh
+
+# 合約配置（如果包含敏感信息）
+# CONTRACT_CONFIG_FOR_FRONTEND.json
+
+# 前端集成示例（開發用）
+FRONTEND_INTEGRATION_EXAMPLE.js
